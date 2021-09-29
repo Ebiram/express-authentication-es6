@@ -1,14 +1,14 @@
-const User = require('../../models/user')
-const { generatePassword } = require('../auth/utils')
+import User from '../../models/user.js'
+import { generatePassword } from '../auth/utils.js'
 
-exports.index = (req, res) => {
+const index = (req, res) => {
     return res.json({
         username: req.user.username,
         email: req.user.email
     })
 }
 
-exports.changePassword = (req, res) => {
+const changePassword = (req, res) => {
     User.findOne({ _id: req.user._id }, (err, user) => {
         if (err) {
             return res.status(400).json(err)
@@ -26,3 +26,6 @@ exports.changePassword = (req, res) => {
         })
     })
 }
+
+export default index
+export default changePassword

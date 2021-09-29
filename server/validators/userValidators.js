@@ -1,4 +1,4 @@
-const User = require('../models/user')
+import User from '../models/user.js'
 
 const checkUsername = username => {
     return User.findOne({ username: username }).then(result => {
@@ -18,8 +18,6 @@ const checkEmail = email => {
     })
 }
 
-module.exports = {
-    checkUsername,
-    validUsername,
-    checkEmail
-}
+export default checkUsername
+export default validUsername
+export default checkEmail

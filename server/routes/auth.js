@@ -1,4 +1,4 @@
-const { Router } = require('express')
+import { Router } from 'express'
 const router = Router()
 const {
     loginValidator,
@@ -41,4 +41,4 @@ router.post('/change-password',
     validateRequest,
     accountController.changePassword)
 
-module.exports = router
+export default router

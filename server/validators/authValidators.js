@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
-const { checkUsername, checkEmail } = require('./userValidators')
+import { body, validationResult } from 'express-validator'
+import { checkUsername, checkEmail } from './userValidators.js'
 
 const loginValidator = () => {
     return [
@@ -82,10 +82,8 @@ const userAuth = (req, res, next) => {
     next()
 }
 
-module.exports = {
-    loginValidator,
-    registerValidator,
-    passwordValidator,
-    validateRequest,
-    userAuth
-}
+export default loginValidator
+export default registerValidator
+export default passwordValidator
+export default validateRequest
+export default userAuth

@@ -1,5 +1,5 @@
-const User = require('../../models/user')
-const { generatePassword } = require('./utils')
+import User from '../../models/user.js'
+import { generatePassword } from './utils.js'
 
 const registerController = (req, res) => {
     const password = generatePassword(req.body.password)
@@ -20,4 +20,4 @@ const registerController = (req, res) => {
     })
 }
 
-module.exports = registerController
+export default registerController

@@ -1,4 +1,4 @@
-const { pbkdf2Sync, randomBytes } = require('crypto')
+import { pbkdf2Sync, randomBytes } from 'crypto'
 
 // generate password
 const generatePassword = password => {
@@ -17,5 +17,5 @@ const validatePassword = (password, hash, salt) => {
     return hash === hashVerify
 }
 
-module.exports.generatePassword = generatePassword
-module.exports.validatePassword = validatePassword
+export default generatePassword
+export default validatePassword

@@ -1,15 +1,18 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const session = require('express-session');
-const cors = require('cors');
-const passport = require('passport');
-require('dotenv').config();
+import createError from 'http-errors'
+import express from 'express'
+import path from 'path'
+import cookieParser from 'cookie-parser'
+import logger from 'morgan'
+import session from 'express-session'
+import cors from 'cors'
+import passport from 'passport'
+import dotenv from 'dotenv'
+dotenv.config()
 
+// init app
 const app = express();
 
+// init configs
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,10 +32,11 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-require('./controllers/auth/passport')
+import './controllers/auth/passport.js'
 
 // auth routes
-app.use('/', require('./routes/auth'))
+import authRouter from './routes/auth.js'
+app.use('/', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -50,4 +54,4 @@ app.use(function (err, req, res, next) {
   res.json('error');
 });
 
-module.exports = app;
+export default app
